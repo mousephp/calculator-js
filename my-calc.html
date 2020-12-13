@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	#table{
+		background: #ccc;
+	    margin: 0 auto;	    
+	    padding: 20px;
+	    border-radius: 5px;
+	}
+
+	.inclu-border{
+		border: solid 10px; 
+		border-radius: 15px;
+		box-shadow: 0px 0px 0px 10px #666;
+		padding: 0;
+	}
+
+	.number{
+		cursor: pointer;		
+	}
+	.number input{
+		width: 100%;
+		height: 100%;
+		border: none;	
+	}
+	
+	.number:hover{
+		background: black;	
+		color: #ffffff;	
+		font-weight: bold;
+	}
+
+	.expression{
+		cursor: pointer;		
+	}
+	.expression input{
+		width: 100%;
+		border: none;			
+	}
+	
+	.expression:hover{
+		background: #79e210;	
+		color: red;	
+		font-weight: bold;
+	}
+
+	h1{
+		text-align: center;
+		color:#00ff37;
+		font-weight: 700; 
+		font-family: fantasy;
+	}
+</style>
+<body>
+<h1>Calculator</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 inclu-border">
+
+			  <form action="#" method="post">
+				  <table class="table" id="table">
+				    <thead>
+				      <tr>
+				        <td colspan="6">	
+				        	 <input type="text" class="form-control input-lg" disabled name="result" id="result">
+				      	</td>
+				      </tr>
+				    </thead>
+				    <tbody class="text-center">
+				      <tr class="table-success">
+				        <td class="number"><input type="button" value="1" onclick="display('1')"></td>
+				        <td class="number"><input type="button" value="2" onclick="display('2')"></td>
+				        <td class="number"><input type="button" value="3" onclick="display('3')"></td>
+				        <td class="expression"><input type="button" value="+" onclick="display('+')"></td>
+				      </tr>
+				      <tr class="table-danger">
+				        <td class="number"><input type="button" value="4" onclick="display('4')"></td>
+				        <td class="number"><input type="button" value="5" onclick="display('5')"></td>
+				        <td class="number"><input type="button" value="6" onclick="display('6')"></td>
+				        <td class="expression"><input type="button" value="-" onclick="display('-')"></td>
+				      </tr>
+				      <tr class="table-info">
+				        <td class="number"><input type="button" value="7" onclick="display('7')"></td>
+				        <td class="number"><input type="button" value="8" onclick="display('8')"></td>
+				        <td class="number"><input type="button" value="9" onclick="display('9')"></td>
+				        <td class="expression"><input type="button" value="*" onclick="display('*')"></td>
+				      </tr>			      
+				      <tr class="table-active">
+				        <td class="expression"><input type="button" value="C" onclick="clr()"></td>
+				        <td class="number"><input type="button" value="0" onclick="display('0')"></td>
+				        <td class="expression"><input type="button" value="=" onclick="calculate()"></td>
+				        <td class="expression"><input type="button" value="/" onclick="display('/')"></td>
+				      </tr>
+
+					 <tr class="table-active">
+				        <td class="" id="back"><input type="button" value="<--" onclick="back(this.form.result)"></td>			      
+				      </tr>
+				
+				    </tbody>
+				  </table>
+			  </form>
+
+			</div>
+		</div>
+	</div>
+	
+
+<script type="text/javascript">
+	function back(input){
+		input.value = input.value.substring(0, input.value.length - 1)
+	}
+
+	//hiển thị value khi click number lên ô input
+	function display(val){
+		document.getElementById("result").value+=val;
+	}
+
+	//lấy giá trị biểu thức ở ô input và tính toán
+	function calculate(){
+		let getInput=document.getElementById("result").value;
+		let calc=eval(getInput);
+		document.getElementById("result").value=calc;
+	}
+
+	//clear giá trị ở ô input 
+	function clr(){
+		document.getElementById("result").value="";
+	}
+
+</script>
+
+</body>
+</html>
